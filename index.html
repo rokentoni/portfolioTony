@@ -81,6 +81,13 @@
             margin: 10px;
             border-radius: 10px;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .show {
+            opacity: 1;
+            transform: translateY(0);
         }
         footer {
             background-color: #f8bbd0;
@@ -110,7 +117,6 @@
         legend{
             font-size: xx-large;
         }
-
         video{
             width: 1000px;
         }
@@ -138,20 +144,8 @@
                     <p><b>AGE: </b>19 years old</p>
                     <p><b>ORIGIN: </b>Madagascar</p>
                 </fieldset>
-                <br><br>
-                <fieldset>
-                    <legend>SKILLS</legend>
-                    <p>Coding 💻</p>
-                    <p>Gaming 🎮</p>
-                    <p>Problem solving 🧠</p>
-                    <p>Writing 📖</p>
-                    <p>Piano 🎹</p>
-                    <p>Autodidact ⚡</p>
-                    <i><p>"I will use all of my skills to create innovative projects and achieve world pea- I mean better world"</p></i>
-                </fieldset>
             </form>
         </div>
-        <br><br>
         <div class="card">
             <h1>Video</h1>
             <p>Discover this poem I wrote in a mini-video (mini-project Multimedia)</p>
@@ -159,14 +153,9 @@
                 <source src="video/in the night time.mp4" type="video/mp4">
             </video>
         </div>
-        <br><br>
         <div class="card">
             <h1>Contacts</h1>
-            <p>Feel free to contact me for collaborations</p><br><br>
-                <p><b><a href="mailto:tonyravoahangy@gmail.com"><i class="fas fa-envelope" style="font-size: 20px;"></i> tonyravoahangy@gmail.com</a></b></p>
-                <p><b><a href="https://www.instagram.com/_.natsukiii._/"><img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram" width="20" height="20"> _.natsukiii._</a></b></p>
-                <p><b><a href="https://www.facebook.com/natsukiiikun"><img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" width="20" height="20"> 土日 ロケン</a></b></p>
-                <p><b><a href="https://github.com/rokentoni"><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub" width="20" height="20"> rokentoni</a></b></p>
+            <p>Feel free to contact me for collaborations</p>
         </div>
     </section>
     <footer>&copy; pliz don't copy without consent, there is copyright TwT</footer>
@@ -174,6 +163,19 @@
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
         }
+        
+        function revealCards() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 50) {
+                    card.classList.add('show');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealCards);
+        window.addEventListener('load', revealCards);
     </script>
 </body>
 </html>
